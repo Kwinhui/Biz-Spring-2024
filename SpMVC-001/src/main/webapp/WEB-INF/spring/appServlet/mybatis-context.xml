@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- dataSource : 어떻게 DBMS 에 연결할까 BasicDa ctrl + space -->
+	<!-- BasicDataSource : 자동으로 DB 연결 Pool 을 만들어준다. -->
+	
+	<!-- 
+	driverClassName = 누구를 통해서 value = cj 가 붙어있는게 최신,성능개선된 버전
+		value 를 통해서 driver를 연결하겠다.
+	username = 사용자ID 
+	password = 비밀번호
+	url = value = jdbc를 통해 mysql에 연결해서 localhost:3306을 통해서 mydb에 연결해라
+ -->
+	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
+
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="username" value ="root"/>
+		<property name="password" value="!Biz8080"/>
+		<property name="url" value = "jdbc:mysql://localhost:3306/orderDB"/>
+	</bean>
+	<!-- SqlSessionFactory : 
+	MyBatis 를 사용하여 JavaCode 와 dataSource 를 연결하는 방법 SqlSession ctrl + space -> SqlSessionFactoryBean
+	 	bean 끼리 연결할땐 ref를 사용 
+	 -->
+	 <!-- DataSource 와 reference 연결하기 -->
+	 <bean id = "sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" ref="ds"></property>
+	 	<property name="typeAliasesPackage" value="com.callor.hello.models" ></property>
+	 
+	 </bean>
+	 
+	 
+	<!-- SqlSessionTemplate : SQL 명령을 DBMS 에게 전달할때 사용하는 도구
+		SqlSessionTemplate
+	 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>	
+	
+	<!-- com.callor.hello.persistance 이 패키지에 있는 interface 를 스캔해줘 -->
+	<mybatis-spring:scan base-package="com.callor.hello.persistance"/>		
+	
+	
+</beans>
