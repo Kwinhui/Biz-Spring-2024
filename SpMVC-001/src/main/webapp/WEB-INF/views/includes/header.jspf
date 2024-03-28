@@ -18,7 +18,7 @@
 <nav class="w3-bar w3-black">
 	<a href="${rootPath }" class="w3-bar-item w3-mobile w3-button">Home</a>
 	<a href="#" class="w3-bar-item w3-mobile w3-button">상품정보</a>
-	<a href="#" class="w3-bar-item w3-mobile w3-button">거래처관리</a>
+	<a href="${rootPath }/customer" class="w3-bar-item w3-mobile w3-button">거래처관리</a>
 	<a href="${rootPath }/order" class="w3-bar-item w3-mobile w3-button">주문서</a>
 	<a href="${rootPath }/user/login" class="w3-bar-item w3-mobile w3-button">로그인</a>
 	<a href="${rootPath }/user/join" class="w3-bar-item w3-mobile w3-button">회원가입</a>

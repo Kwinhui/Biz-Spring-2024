@@ -8,16 +8,15 @@
 
 <html lang="ko">
 <%@ include file="/WEB-INF/views/includes/head.jspf"%>
-
 <style>
 	table.w3-table-all {
-		width: 70%;
+		width: 80%;
 		margin: 10px auto;
 		
 	}
 	div.btn_box {
 		display: block;
-		width:70%;
+		width:80%;
 		margin: 5px auto;
 		text-align: right;
 		padding: 0; 
@@ -25,24 +24,23 @@
 		
 	}
 </style>
+
 <body>
 <%@ include file="/WEB-INF/views/includes/header.jspf"%>
 	<table class="w3-table-all w3-hoverable">
 		<tr>
-			<th>주문코드</th>
-			<th>주문일자</th>
-			<th>주문고객코드</th>
-			<th>고객이름</th>
-			<th>고객번호</th>
+			<th>상품코드</th>
+			<th>상품이름</th>
+			<th>상품종류</th>
+			<th>상품가격</th>
 		</tr>
 		
-		<c:forEach items="${OD_LIST }" var="ORDER">
+		<c:forEach items="${PD_LIST }" var="PRODUCT">
 			<tr>
-				<td>${ORDER.o_num }</td>
-				<td>${ORDER.o_date }</td>
-				<td>${ORDER.o_ccode }</td>
-				<td>${ORDER.c_name}</td>
-				<td>${ORDER.c_tel}</td>
+				<td>${PRODUCT.p_code}</td>
+				<td>${PRODUCT.p_name}</td>
+				<td>${PRODUCT.p_item}</td>
+				<td>${PRODUCT.p_price}</td>
 			</tr>
 		
 		</c:forEach>
