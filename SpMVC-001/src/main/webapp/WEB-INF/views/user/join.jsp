@@ -1,27 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-<!-- rootPath ¶ó´Â º¯¼ö¸¦ ¼±¾ğÇØ¼­ valueÀÇ °ªÀ» ´ã°Ú´Ù -->
+<!-- rootPath ë¼ëŠ” ë³€ìˆ˜ë¥¼ ì„ ì–¸í•´ì„œ valueì˜ ê°’ì„ ë‹´ê² ë‹¤ -->
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<link href="${rootPath}/static/css/main.css?001" rel="stylesheet">
-</head>
-<body>
-	<h1>È¸¿ø°¡ÀÔÆäÀÌÁö</h1>
+<html lang="ko">
+	<%@ include file="/WEB-INF/views/includes/head.jspf"%>
 
-	<form method="POST">
-		<div><input placeholder="USERNAME" name="username"/></div>
-		<div><input placeholder="ºñ¹Ğ¹øÈ£" name="password"/></div>
-		<div><input placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ" name="re_password"/></div>
-		<div><input placeholder="ÀÌ¸§" name="name"/></div>
-		<div><input placeholder="ÀÌ¸ŞÀÏ" name="email"/></div>
-		<div><input placeholder="ÀüÈ­¹øÈ£" name="tel"/></div>
-		<div><input type="submit" value="È¸¿ø°¡ÀÔ"/></div>
+	<style>
+		form.w3-container {
+			width: 60%;
+			margin: 10px auto;
+			fieldset {
+				border-radius: 20px;
+				padding: 16px;
+				
+			}
+			legend {
+				text-align: center;
+				font-weight: 900;
+				font-size: 1.3rem;
+			}
+			input {
+				margin-bottom: 10px;
+				border-radius: 10px;
+			}
+		}
+	</style>
+
+
+<body>
+	<%@ include file="/WEB-INF/views/includes/header.jspf"%>
+
+
+	<form method="POST" class="w3-container ">
+		<fieldset>
+		<legend>íšŒì›ê°€ì…</legend>
+		<label class="w3-text-teal">USERNAME</label>
+		<input placeholder="USERNAME" name="username" class="w3-input w3-border w3-light-gray"/>
+		
+		<label class="w3-text-teal">ë¹„ë°€ë²ˆí˜¸</label>
+		<input placeholder="ë¹„ë°€ë²ˆí˜¸" name="password" class="w3-input w3-border w3-light-gray"/>
+		
+		<label class="w3-text-teal">ì´ë¦„</label>
+		<input placeholder="ì´ë¦„" name="name" class="w3-input w3-border w3-light-gray"/>
+		
+		<label class="w3-text-teal">ì´ë©”ì¼</label>
+		<input placeholder="ì´ë¦„" name="name" class="w3-input w3-border w3-light-gray"/>
+		
+		<label class="w3-text-teal">ì „í™”ë²ˆí˜¸</label>
+		<input placeholder="ì´ë©”ì¼" name="email" class="w3-input w3-border w3-light-gray"/>
+		
+		
+		
+		<input type="submit" value="íšŒì›ê°€ì…" class="w3-btn w3-blue-gray w3-right" />
+		</fieldset>	
 	</form>
 	<p>${USER.username}
 	<p>${USER.password}
