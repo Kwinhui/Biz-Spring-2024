@@ -15,7 +15,7 @@
 <link href="rootPath/static/css/main.css?001" rel="stylesheet">
 </head>
 <body>
-	<h1>${not empty CUST ? "고객정보 수정" : "고객정보 등록" }</h1>
+	<h1>고객정보 등록</h1>
 	<h3>${MSG}</h3>
 	<form method="POST">
 		<div><input placeholder="고객코드" name="c_code" value="${CUST.c_code }"/></div>

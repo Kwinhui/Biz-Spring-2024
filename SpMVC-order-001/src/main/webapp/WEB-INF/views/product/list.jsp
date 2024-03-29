@@ -30,10 +30,8 @@
 
 <body>
 <%@ include file="/WEB-INF/views/includes/header.jspf"%>
-		<div class="w3-container btn_box">
+<div class="w3-container btn_box">
 			<a href="${rootPath}/product/insert" class="w3-button w3-blue w3-round">상품 추가</a>
-			
-		</div>
 	<table class="w3-table-all w3-hoverable">
 		<thead>
 		<tr>
@@ -58,7 +56,9 @@
 	
 	</table>
 
-
+		
+			
+		</div>
 
 
 
