@@ -34,7 +34,7 @@
 	// 모든 JS 에서 사용할 수 있도록 변수를 선언해 둔다.
 	var rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/customer.js?2024-03-29-002"></script>
+<script src="${rootPath}/static/js/customer.js?2024-03-29-003"></script>
 <!-- script는 절대로 셀프클로징 X  -->
 
 <body>

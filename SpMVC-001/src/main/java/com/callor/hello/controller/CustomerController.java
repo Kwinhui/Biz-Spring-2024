@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.callor.hello.models.CustomVO;
 import com.callor.hello.persistance.CustomDao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping(value="/customer")
 public class CustomerController {
@@ -74,6 +78,52 @@ public class CustomerController {
 		
 		return "custom/detail";
 	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String update(@RequestParam("ccode") String cCode, Model model) {
+		// query string
+		CustomVO customVO = customDao.findById(cCode);
+		model.addAttribute("CUST", customVO);
+		return "custom/input"; 
+	}
+	
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(CustomVO customVO) {
+		
+		log.debug("Update {}", customVO.toString());
+		
+		int result = customDao.update(customVO);
+		String retString = String.format("redirect:/customer/detail?c_code=%s", customVO.getC_code());
+		return retString;
+//		return "redirect:/custom/detail?c_code=" + customVO.getC_code();
+	}
+	
+	/*
+	 * URL(URI) 에 부착된 변수 값 추출하기
+	 * @PathVariable("이름") 으로 값을 추출한다
+	 */
+	
+	@RequestMapping(value="/delete/{ccode}", method=RequestMethod.GET)
+	public String delete(@PathVariable("ccode") String cCode) {
+		// url에 붙어있는 ccode 를 가져와 cCode 에 담아라
+		int result = 0;
+		try {
+			result = customDao.delete(cCode);
+			
+		} catch (Exception e) {
+			
+			return "redirect:/customer/detail?c_code=" + cCode + "&msg=FK";
+		}
+		if(result > 0) {
+			return "redirect:/customer";
+		} else {
+			return "redirect:/customer/detail?c_code=" + cCode + "&msg=NOT";
+		}
+			
+		
+	}
+	
 	
 	
 

@@ -15,10 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
       document.location.href = `${rootPath}/customer/detail?c_code=${ccode}`;
     }
   };
-  cust_body.addEventListener("click", cust_body_onClick_handler);
+  cust_body?.addEventListener("click", cust_body_onClick_handler);
 
-  btn_update.addEventListener("click", (e) => {
+  btn_update?.addEventListener("click", (e) => {
     const ccode = e.target.dataset.ccode;
-    alert(ccode);
+    // alert(ccode);
+    // update?c_code=${ccode} 로 적게되면 주소창에도 c_code가 있고 input body에도 c_code가 있기때문에
+    // c_code 의 값이 2개가 넘어오게 된다 그렇기 때문에 주소창엔 변수와 다른 값으로 적어주는게 좋다.
+    document.location.href = `${rootPath}/customer/update?ccode=${ccode}`; // ? get방식
+  });
+
+  btn_delete.addEventListener("click", (e) => {
+    const ccode = e.target.dataset.ccode;
+
+    if (confirm("정말 삭제할까요?")) {
+      document.location.replace(`${rootPath}/customer/delete/${ccode}`);
+    }
   });
 });
