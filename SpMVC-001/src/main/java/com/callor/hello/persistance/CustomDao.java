@@ -13,4 +13,9 @@ public interface CustomDao {
 	
 	// vo값만 넘겨주면 custom-mapper.xml 에서 처리해줌
 	public int insert(CustomVO vo);
+
+	
+	@Select(" SELECT * FROM tbl_customer "
+			+ " WHERE c_code = #{cCode} ")
+	public CustomVO findById(String cCode);
 }

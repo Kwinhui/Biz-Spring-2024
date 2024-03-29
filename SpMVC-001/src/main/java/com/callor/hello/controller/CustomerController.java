@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.hello.models.CustomVO;
 import com.callor.hello.persistance.CustomDao;
@@ -55,5 +56,27 @@ public class CustomerController {
 		
 	}
 	
+	/*
+	 * 거래처 코드를 전달받아 거래처를 SELECT 하고
+	 * SELECT 한 거래처 정보를 Detail 화면에서 보여주기
+	 */
+	
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public String detail(@RequestParam("c_code") String cCode, Model model) {
+		// js에서 document.location.href = `${rootPath}/customer/detail?c_code=${ccode}`;
+		// c_code=${ccode} c_code에 ccode의 값을 넣어줘서 c_code로 매개변수를 받아야하지만
+		// 나는 cCode로 사용을 하고싶다 라면 @RequestParam("c_code") 적어줘야함 
+		
+		
+		CustomVO customVO = customDao.findById(cCode);
+		
+		model.addAttribute("CUST", customVO);
+		
+		return "custom/detail";
+	}
+	
+	
+
+
 	
 }
