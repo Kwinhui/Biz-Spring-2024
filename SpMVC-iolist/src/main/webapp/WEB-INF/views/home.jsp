@@ -11,9 +11,10 @@
 const rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/js/home.js?001" ></script> 
-
+<link href="rootPath/static/css/main.css?001" rel="stylesheet">
 <body>
 <%@ include file="/WEB-INF/views/includes/header.jspf"%>
+<a href="${rootPath}/insert" class="w3-button w3-blue w3-round">상품 추가</a>
 	<table class="w3-table-all w3-hoverable">
 		<thead>
 			<tr>

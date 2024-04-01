@@ -12,7 +12,7 @@
 	<logger name="org.mybatis" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-	<logger name="com.callor.hello" level="debug" additivity="false">
+	<logger name="com.callor.iolist" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	
 	</logger>

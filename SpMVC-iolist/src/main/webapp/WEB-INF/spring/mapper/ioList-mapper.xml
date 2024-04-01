@@ -4,8 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.callor.iolist.persistance.ioListDao">
- 
+
+<select id="selectAll" resultType="ioListVO">
+ SELECT 
+        io_seq, 
+        io_date, 
+        io_time, 
+        io_pname, 
+        CASE io_input
+            WHEN '1' THEN '매입'
+            WHEN '2' THEN '매출'
+            ELSE '기타'
+        END AS io_input,
+        io_iprice, 
+        io_oprice, 
+        io_quan, 
+        io_total
+    FROM tbl_iolist;
+</select>
+
+
+<insert id="insert">
+    INSERT INTO tbl_iolist (io_date, io_time, io_pname, io_input, io_iprice, io_oprice, io_quan)
+    VALUES (#{io_date}, #{io_time}, #{io_pname}, #{io_input},
+
+    #{io_iprice}, #{io_oprice}, #{io_quan})
+</insert>
  	
+ 	<update id="update">
+ 	UPDATE tbl_iolist
+ 	SET io_pname = #{io_pname}, io_iprice = #{io_iprice},
+ 		io_oprice = #{io_oprice}, io_quan = #{io_quan}
+ 		WHERE io_seq = #{io_seq}
+ 	
+ 	</update>
 
  
  </mapper> 
