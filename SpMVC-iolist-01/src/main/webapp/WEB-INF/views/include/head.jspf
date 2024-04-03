@@ -27,8 +27,24 @@
 			display: flex;
 			flex-direction: column;
 		}
+		a {
+			text-decoration : none;
+			color: inherit;
+		}
+		
 </style>
 
 
-<link href="${rootPath }/static/css/main.css?002" rel="stylesheet">
+<link href="${rootPath }/static/css/main.css?2024-04-02-003" rel="stylesheet">
+<link href="${rootPath }/static/css/iolist.css?2024-04-03-004" rel="stylesheet">
+<script>
+/*
+ * Spring View 에서(JSP) 사용하는 EL(Expression Lang.) Tag
+ * Controller 로 부터 받은 변수의 값을 표현하거나, 간단한 연산식을 표현하는 방법
+ */
+ 
+	const rootPath = "${rootPath}"
+</script>
+
+<script src="${rootPath }/static/js/main.js?2024-04-03-002"></script>
 </head>

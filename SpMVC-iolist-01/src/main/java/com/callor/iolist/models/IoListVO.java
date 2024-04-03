@@ -12,7 +12,7 @@ import lombok.ToString;
  * int, Integer : 작은 정수형
  * 
  * 모두 정수값을 취급하는 변수 선언 키워드 이다
- * 여기에서 소문자 키워ㅡ는 primitive(기본) type
+ * 여기에서 소문자 키워드는 primitive(기본) type
  * 		대문자 키워드는 Wrapper class type
  * 
  * primitive type 은 숫자형 null 과 같은 값을 지정할 수 없다.

@@ -16,3 +16,4 @@ CREATE TABLE tbl_iolist(
 DESC tbl_iolist;
 
 
+DROP TABLE tbl_iolist;

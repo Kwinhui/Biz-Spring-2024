@@ -38,5 +38,4 @@ section.container {
   flex: 1;
   height: calc(100%);
   margin: 3px;
-  border: 1px solid blue;
 }

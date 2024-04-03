@@ -2,32 +2,42 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  
-  <!-- ioListDao 패키지 이름 복사, ioListVO 파일이름 복사  -->
- <mapper namespace="com.callor.iolist.persistance.IoListDao">
- 
- 	
- 	<insert id="insert"></insert>
- 	<update id="update"></update>
- 	<delete id="delete"></delete>
- 	
- 	
- 	
- 	<select id="create_iolist_table">
- 	<!-- IF NOT EXISTS : 이 테이블이 없을때 실행해라 -->
-	CREATE TABLE IF NOT EXISTS tbl_iolist(
-		io_seq	BIGINT		PRIMARY KEY AUTO_INCREMENT	,
-		io_date	VARCHAR(10)	NOT NULL		,
-		io_time	VARCHAR(10)	NOT NULL		,
-		io_input	VARCHAR(1)	NOT NULL		,
-		io_pname	VARCHAR(30)	NOT NULL		,
-		io_price	INT	NOT NULL		,
-		io_quan	INT	NOT NULL		,
-		io_total	INT			
-	)
- 	
- 	</select>
- 
- 
- </mapper> 
+
+
+<!-- ioListDao 패키지 이름 복사, ioListDao 파일이름 복사 -->
+<mapper namespace="com.callor.iolist.persistance.IoListDao">
+
+
+	<insert id="insert" parameterType="IoListVO">
+		INSERT INTO tbl_iolist (
+			io_seq, io_date, io_time, io_input, io_pname, io_price, io_quan, io_total)
+		VALUES (
+			#{io_seq}, #{io_date}, #{io_time}, #{io_input}, #{io_pname}, #{io_price},
+			#{io_quan}, #{io_total}
+		)
+
+	</insert>
+	<update id="update"></update>
+	<delete id="delete"></delete>
+
+
+
+	<select id="create_iolist_table">
+		<!-- IF NOT EXISTS : 이 테이블이 없을때 실행해라 -->
+		CREATE TABLE IF NOT EXISTS tbl_iolist(
+		io_seq BIGINT PRIMARY KEY
+		AUTO_INCREMENT ,
+		io_date VARCHAR(10) NOT NULL ,
+		io_time VARCHAR(10) NOT
+		NULL ,
+		io_input VARCHAR(1) NOT NULL ,
+		io_pname VARCHAR(30) NOT NULL ,
+		io_price INT NOT NULL ,
+		io_quan INT NOT NULL ,
+		io_total INT
+		)
+
+	</select>
+
+
+</mapper> 
