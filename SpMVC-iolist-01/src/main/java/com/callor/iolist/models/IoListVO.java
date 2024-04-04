@@ -32,7 +32,22 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class IoListVO {
-
+	/*
+	 * io_seq 를 wrapper class Long 으로 선언하기
+	 * 숫자형 변수를 wrapper 클래스로 선언하면 
+	 * 이 변수는 null 값을 가질 수 있다.
+	 * 
+	 * JSP 에서 el tag 를 사용하여 값을 비교할때
+	 * ${empty io_seq ? "없음" : "있음"} 와 같이 empty 키워드를 사용하여
+	 * 값의 유/무 를 판단할 수 있다.
+	 * 
+	 * primitive 방식으로 선언하면
+	 * ${io_seq > 0 ? "있음" : "없음"} 처럼 사용을 하는데
+	 * 이때 io_seq 값이 없어서 0인지, 
+	 * 		아니면 실제 값이 0인지 판단하기가 매우 어렵다.
+	 * 
+	 */
+	
 	private Long io_seq;		// BIGINT
 	private String io_date;	// VARCHAR(10)
 	private String io_time;	// VARCHAR(10)
@@ -42,7 +57,13 @@ public class IoListVO {
 	private Integer io_quan;	// INT
 	private Integer io_total;	// INT
 
-
+	private String io_inout;
+	
+	private int io_iprice;
+	private int io_oprice;
+	
+	private int io_itotal;
+	private int io_ototal;
 	
 	
 }
