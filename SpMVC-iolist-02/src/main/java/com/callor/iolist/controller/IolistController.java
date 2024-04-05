@@ -50,58 +50,19 @@ public class IolistController {
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String insert(Model model,HttpSession httpSession) {
+	public String insert(@ModelAttribute(name="IO") IoListVO iolistVO,
+				 Model model,HttpSession httpSession) {
 		
-		/*
-		 * HttpSession 에 저장된 session 정보는 type 이 Object 이다
-		 * 그래서 실제 상황에서는 필요한 객체 type 으로 Casting(형변환)을 해야한다.
-		 * 
-		 * float num1 = 10.0f;
-		 * int num2 = (int) num1;
-		 */
 		UserVO userVO = (UserVO) httpSession.getAttribute(NamesValue.SESSION.USER);
 		
-		// 로그인이 됐는지 확인하는 코드, 되어있지 않으면 login 페이지로 이동
+		
 		if(userVO == null) {
 			return "redirect:/user/login?error=needs";
 		}
-		
-		// 날짜와 관련된 java 1.8 이전버전의 클래스
-				Date today = new Date();
-				// 몇일전 몇일후 계산과 관련된 클래스, 문자열로 만들땐 format 같은것이 필요없음
-				Calendar ca = Calendar.getInstance();
-				
-				// java 1.8 이상에서 사용하는 클래스
-				LocalDate localDate = LocalDate.now();
-				LocalTime localTime = LocalTime.now();
-				// 용량이 큼
-				LocalDateTime localDateTime = LocalDateTime.now();
-				
-				DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-				DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-				
-				/**
-				 * Builder Pattern 을 사용하여 IoListVO 객체 생성하기
-				 * Builder Pattern 을 사용하면 필요한 필드에 값만 셋팅하면서
-				 * 객체를 생성할 수 있다.
-				 */
-				
-//				IoListVO vo =new IoListVO();
-//				vo.setIo_date(localDateTime.format(dayFormat));
-//				vo.setIo_time(localDateTime.format(timeFormat));
-				
-				// 위아래 둘중 아무거나 써도됨
-				IoListVO vo = IoListVO.builder()
-						.io_date(localDateTime.format(dayFormat))
-						.io_time(localDateTime.format(timeFormat))
-						.build();
-				model.addAttribute("IO", vo);
-				log.debug(vo.toString());
-		
-		
+		model.addAttribute("IO", iolistVO);
 		// BODY 라는 변수에 IOLIST_INPUT 이라는 문자열을 담음
 		model.addAttribute("BODY", "IOLIST_INPUT");
-	return "layout";	
+		return "layout";
 
 	}
 	
@@ -113,7 +74,7 @@ public class IolistController {
 	@RequestMapping(value={"/insert","/update/{seq}"}, method=RequestMethod.POST)
 	public String insertOrUpdate(@PathVariable(name = "seq", required = false, value="")
 									// seq 값이 필수는 아님, 값이 없으면 ""  
-			String seq,IoListVO iolistVO, Model model) {
+			String seq, @ModelAttribute("IO") IoListVO iolistVO, Model model) {
 		
 		if(seq != null) {
 			iolistVO.setIo_seq(Long.valueOf(seq));
@@ -169,4 +130,18 @@ public class IolistController {
 		return new SearchDto();
 	}
 	
+	@ModelAttribute(name = "IO")
+	private IoListVO iolistVO() {
+		LocalDateTime localDateTime = LocalDateTime.now();
+		
+		DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+		
+
+		IoListVO vo = IoListVO.builder()
+				.io_date(localDateTime.format(dayFormat))
+				.io_time(localDateTime.format(timeFormat))
+				.build();
+		return vo;
+	}
 }
