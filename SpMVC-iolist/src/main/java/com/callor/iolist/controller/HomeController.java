@@ -62,7 +62,7 @@ public class HomeController {
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insert(ioListVO vo, Model model) {
 		int result = ioListDao.insert(vo);
-		log.debug(vo.toString());
+//		log.debug(vo.toString());
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -112,7 +112,7 @@ public class HomeController {
 	@RequestMapping(value="update", method=RequestMethod.POST)
 	public String update(ioListVO ioListVO, Model model) {
 		
-		log.debug("UPDATE : {}", ioListVO);
+//		log.debug("UPDATE : {}", ioListVO);
 		int result = ioListDao.update(ioListVO);
 		
 		return "redirect:/detail?io_seq=" + ioListVO.getIo_seq();

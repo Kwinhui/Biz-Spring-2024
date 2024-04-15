@@ -20,7 +20,7 @@
         io_oprice, 
         io_quan, 
         io_total
-    FROM tbl_iolist;
+    FROM tbl_iolist
 </select>
 
 
