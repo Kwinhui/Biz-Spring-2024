@@ -1,12 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const join_form = document.querySelector("form.join");
-  const username = join_form.querySelector("input[name='u_name']");
-  const password = join_form.querySelector(
-    "input[name='u_password']"
-  );
-  const re_password = join_form.querySelector(
-    "input[name='re_password']"
-  );
+  const username = join_form.querySelector("input[name='username']");
+  const password = join_form.querySelector("input[name='password']");
+  const re_password = join_form.querySelector("input[name='re_password']");
   const btn_join = join_form.querySelector("button");
 
   btn_join.addEventListener("click", () => {
@@ -16,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     if (!password.value) {
-      alert("PASSWORD 는 반드시 입력하세요");
+      alert("PASSWORD 은 반드시 입력하세요");
       password.select();
       return false;
     }
