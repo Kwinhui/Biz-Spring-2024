@@ -15,9 +15,11 @@
     <h2>The time on the Today is ${serverTime}</h2>
     <h3><a href="${rootPath }/user/login">로그인</a></h3>
     <h3><a href="${rootPath }/home">홈으로 가기</a></h3>
+    <h3><a href="${rootPath }/admin">관리자 화면</a></h3>
     <!-- 로그인이 돼있으면 -->
     <sec:authorize access="isAuthenticated()">
-    	
+    	<p><sec:authentication property="principal['username']"/></p>
+    	<p><sec:authentication property="principal['email']"/></p>
     	<f:form method="POST" action="${rootPath }/logout">
     		<button>로그아웃</button>
     	</f:form>

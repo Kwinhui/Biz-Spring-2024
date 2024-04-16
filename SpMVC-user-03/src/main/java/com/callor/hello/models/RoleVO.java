@@ -15,7 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class RoleVO {
 	
-	private String r_username; //FK
+	private String r_username; // FK
 	private String r_role;
 
 }

@@ -3,32 +3,27 @@
 
 ## 환경설정
 - 필수 dependency
-
 ```xml
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-		</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+</dependency>
 ```
 
 ## MyBatis DBMS 연동 설정
 - 필수 dependency
 ```
 mybatis
-mybatis-spring 3.0.0
-dbcp2 : common-dbcp2
-mysql : mysql-connect/j
+mybatis-spring
+dbcp : common-dbcp2
+mysql : mysql-connector/j
 spring-jdbc
 ```

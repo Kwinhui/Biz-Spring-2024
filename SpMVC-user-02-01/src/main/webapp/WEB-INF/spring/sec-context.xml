@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security-5.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan
+		base-package="com.callor.hello.service.auth"></context:component-scan>
+
+
+	<!-- http 로 요청되는 모든것들을 중간에서 제어함 -->
+	<sec:http auto-config="true" use-expressions="true">
+		<!-- login 화면을 내가 만들게 -->
+		<!-- login-page="/user/login" - GET -->
+		<!-- login-processing-url="/user/login" - POST -->
+		<sec:form-login login-page="/user/login"
+			username-parameter="u_name" password-parameter="u_password"
+			login-processing-url="/user/login" />
+		<!-- 로그아웃이 실행되면 처음화면, 세션정보 모두 삭제해 -->
+		<sec:logout logout-success-url="/"
+			invalidate-session="true" />
+		<!-- home 이라는 요청을 보내면 가로채겠다 -->
+		<!-- 인증을 받았을때만 /home 으로 가 아무나 다 가도돼 -->
+		<sec:intercept-url pattern="/home"
+			access="isAuthenticated()" />
+		<!-- 로그인이 돼있고, 권한이 USER,ADMIN 이면 가 -->
+		<sec:intercept-url pattern="/user/mypage"
+			access="hasAnyRole('USER','ADMIN')" />
+
+		<!-- permitAll 과 비슷하지만 로그인이 안돼있어야함 -->
+		<!-- 로그인하지 않은 사용자만이 /user/login에 접근할 수 있습니다. -->
+		<sec:intercept-url pattern="/user/login"
+			access="isAnonymous()" />
+
+		<sec:intercept-url pattern="/user/join"
+			access="isAnonymous()" />
+
+		<!-- 로그인이 돼있고, ADMIN 권한을 가진 사람만 이용해 -->
+		<sec:intercept-url pattern="/admin"
+			access="hasRole('ADMIN')" />
+
+
+		<!-- 위에서 지정한곳 이외 모든곳은 아무나 다 이용해 -->
+		<!-- permitAll() 은 무조건 맨 아래 있어야함 -->
+		<sec:intercept-url pattern="/**"
+			access="permitAll()" />
+
+	</sec:http>
+	<sec:authentication-manager>
+		<sec:authentication-provider
+			ref="authorProviderImpl" />
+	</sec:authentication-manager>
+	<!-- <sec:authentication-manager> <sec:authentication-provider> <sec:user-service> 
+		noop - 암호화되지 않은 상태 <sec:user name="callor" authorities="ROLE_ADMIN" password="{noop}12345"/> 
+		<sec:user name="callor88" authorities="ROLE_USER" password="{noop}12345"/> 
+		</sec:user-service> </sec:authentication-provider> </sec:authentication-manager> -->
+
+</beans>

@@ -39,8 +39,16 @@
 	<!-- spring form tag 는 method 기본값이 POST  -->
 	<f:form class="form login">
 		<!-- spring security는 post로 보낼때 반드시 token을 가지고오게 함 -->
-		<!--  -->
-		
+		<!-- 주소에 login?error 가 있으면 -->
+		<c:if test="${param.error != null }" >Invalid User.</c:if>
+		<!-- Exception 메세지가 나타남 -->
+		<!-- c:remove 저 변수를 삭제해라 세션을 지워줘야함
+			그렇지 않으면 해커에 의해 서버가 터질수있음 
+		 -->
+		<c:if test="${SPRING_SECURITY_LAST_EXCEPTION  != null}">
+			${SPRING_SECURITY_LAST_EXCEPTION.message }
+			<c:remove var="SPRING_SECURITY_LAST_EXCEPTION"/>
+		</c:if>	
 	
 		<div><label>UserName</label><input name="u_name" /></div>
 		<div><label>Password</label><input name="u_password" /></div>

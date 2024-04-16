@@ -18,7 +18,11 @@
 		<!-- login-processing-url="/user/login" - POST -->
 		<sec:form-login login-page="/user/login"
 			username-parameter="u_name" password-parameter="u_password"
-			login-processing-url="/user/login" />
+			login-processing-url="/user/login" 
+			default-target-url="/"
+			/>
+		
+			
 		<!-- 로그아웃이 실행되면 처음화면, 세션정보 모두 삭제해 -->
 		<sec:logout logout-success-url="/"
 			invalidate-session="true" />
@@ -47,6 +51,8 @@
 		<!-- permitAll() 은 무조건 맨 아래 있어야함 -->
 		<sec:intercept-url pattern="/**"
 			access="permitAll()" />
+<sec:access-denied-handler error-page="/auth/denied"/>
+
 
 	</sec:http>
 	<sec:authentication-manager>
