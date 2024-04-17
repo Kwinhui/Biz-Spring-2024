@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+}
+ul {
+  list-style: none;
+}
+div.header {
+  text-align: center;
+  display: flex;
+  h1 {
+    flex: 1;
+  }
+  ul {
+    display: flex;
+  }
+}
+
+nav {
+  background-color: black;
+  ul {
+    display: flex;
+  }
+  li {
+    color: yellow;
+    margin: 10px;
+  }
+}

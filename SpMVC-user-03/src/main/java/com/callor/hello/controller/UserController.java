@@ -1,8 +1,10 @@
 package com.callor.hello.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.hello.models.UserVO;
 import com.callor.hello.service.UserService;
@@ -35,6 +37,22 @@ public class UserController {
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String login() {
 		return null;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/idCheck/{username}")
+	public String idcheck(@PathVariable("username") String username) {
+		
+		UserVO userVO = userService.findById(username);
+		// 등록된 유저가 없다
+		// username 사용자 이름이 가입되지 않았다.
+		// OK라는 문자열을 보내고싶지만 OK.jsp 가 열리게됨
+		if(userVO == null) return "OK";
+			
+		// null 이라는 문자열을 보내고싶지만 idcheck.jsp 가 열리게됨
+		// 그래서 메서드에 @ResponseBody 를 붙여주면 렌더링이 되지않고 문자열을 보내줌
+		// 결국 우리가 원하는 OK,null 이라는 문자열을 body에 담아서 그대로 줌
+		return null;	
 	}
 	
 
