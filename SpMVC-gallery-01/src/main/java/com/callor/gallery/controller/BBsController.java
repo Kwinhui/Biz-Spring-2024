@@ -26,4 +26,9 @@ public class BBsController {
 		return null;
 	}
 	
+	@RequestMapping(value="/free/like", method=RequestMethod.GET)
+	public String like() {
+		return null;
+	}
+	
 }
