@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!-- template 전체 레이아웃을 감싸는 틀 -->
+<tiles-definitions>
+
+
+	<definition name="bbs/free" extends="default">
+
+		<put-attribute name="content"
+			value="/WEB-INF/views/bbs/home.jsp">
+			<definition template="/WEB-INF/views/bbs/home.jsp">
+				<put-attribute name="aside-left"
+					value="/WEB-INF/views/bbs/bbs-aside-left.jsp" />
+				<put-attribute name="aside-right"
+					value="/WEB-INF/views/bbs/free/list.jsp" />
+			</definition>
+
+		</put-attribute>
+	</definition>
+	
+	<definition name="bbs/free/write" extends="default">
+
+		<put-attribute name="content"
+			value="/WEB-INF/views/bbs/home.jsp">
+			<definition template="/WEB-INF/views/bbs/home.jsp">
+				<put-attribute name="aside-left"
+					value="/WEB-INF/views/bbs/bbs-aside-left.jsp" />
+				<put-attribute name="aside-right"
+					value="/WEB-INF/views/bbs/free/write.jsp" />
+			</definition>
+
+		</put-attribute>
+	</definition>
+
+
+</tiles-definitions>
+  
+  
