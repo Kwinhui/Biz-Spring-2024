@@ -11,5 +11,6 @@
     <tiles:insertAttribute name="header" />
     <tiles:insertAttribute name="nav" />
     <tiles:insertAttribute name="content" />
+    <!-- content 조건에 따라 화면을 변경해서 구성하는곳 -->
   </body>
 </html>

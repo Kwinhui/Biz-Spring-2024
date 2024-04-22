@@ -4,36 +4,50 @@
   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <!-- template 전체 레이아웃을 감싸는 틀 -->
+<!-- main-layout 에 있는 name = "default" 를 가져와 -->
 <tiles-definitions>
-
-
-	<definition name="bbs/free" extends="default">
-
+	<definition name="bbs" extends="default">
 		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/home.jsp">
-			<definition template="/WEB-INF/views/bbs/home.jsp">
-				<put-attribute name="aside-left"
-					value="/WEB-INF/views/bbs/bbs-aside-left.jsp" />
-				<put-attribute name="aside-right"
-					value="/WEB-INF/views/bbs/free/list.jsp" />
-			</definition>
+			value="/WEB-INF/views/bbs/home.jsp" />
+		<put-attribute name="aside-left"
+			value="/WEB-INF/views/bbs/bbs-aside-left.jsp" cascade="true" />
+		<put-attribute name="aside-right" value=""
+			cascade="true" />
+	</definition>
 
+
+
+	<definition name="bbs/free" extends="bbs">
+
+		<put-attribute name="aside-right"
+			value="/WEB-INF/views/bbs/free/list.jsp" cascade="true" />
+	</definition>
+
+
+	<definition name="bbs/free/*" extends="bbs">
+		<put-attribute name="aside-right"
+			value="/WEB-INF/views/bbs/free/{1}.jsp" cascade="true">
 		</put-attribute>
 	</definition>
 	
-	<definition name="bbs/free/*.jsp" extends="default">
+	
 
-		<put-attribute name="content"
-			value="/WEB-INF/views/bbs/home.jsp">
-			<definition template="/WEB-INF/views/bbs/home.jsp">
-				<put-attribute name="aside-left"
-					value="/WEB-INF/views/bbs/bbs-aside-left.jsp" />
-				<put-attribute name="aside-right"
-					value="/WEB-INF/views/bbs/free/{1}.jsp" />
-			</definition>
+	
+	<definition name="bbs/notice" extends="bbs">
 
+		<put-attribute name="aside-right"
+			value="/WEB-INF/views/bbs/notice/list.jsp" cascade="true" />
+	</definition>
+
+
+	<definition name="bbs/notice/*" extends="bbs">
+		<put-attribute name="aside-right"
+			value="/WEB-INF/views/notice/free/{1}.jsp" cascade="true">
 		</put-attribute>
 	</definition>
+
+
+
 
 
 </tiles-definitions>

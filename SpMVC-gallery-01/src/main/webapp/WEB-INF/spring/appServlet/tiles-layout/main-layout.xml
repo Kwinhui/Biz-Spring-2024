@@ -4,9 +4,10 @@
   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <!-- template 전체 레이아웃을 감싸는 틀 -->
+<!-- name = default 다른곳에서 상속을 받겠다 -->
+<!-- template 가장 바깥쪽의 화면 -->
 <tiles-definitions>
-	<definition name="default"
-		template="/WEB-INF/views/home.jsp">
+	<definition name="default" template="/WEB-INF/views/home.jsp">
 		<put-attribute name="head" value="/WEB-INF/views/includes/include-head.jsp" />
 			<put-attribute name="header" value="/WEB-INF/views/includes/include-header.jsp" />
 			<put-attribute name="nav" value="/WEB-INF/views/includes/include-main-nav.jsp" />
@@ -14,8 +15,10 @@
 	<!-- home 은 default를 상속한다 -->
 	
 	<!-- Controller 에서 return "home" 이 요청되면 -->
+	<!-- name = default 로 지정된 파일을 모두 가져와라 -->
 	<definition name="home" extends="default">
-		<put-attribute name="content" value="" />
+		<put-attribute name="content"
+			value="/WEB-INF/views/gallery/list.jsp" />
 	</definition>
 
 

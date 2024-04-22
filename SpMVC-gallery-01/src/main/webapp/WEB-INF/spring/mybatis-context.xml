@@ -16,7 +16,7 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="!Biz8080"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/bbsDB"></property>
+			value="jdbc:mysql://localhost:3306/galleryDB"></property>
 	</bean>
 
 	<!-- SqlSession -->
