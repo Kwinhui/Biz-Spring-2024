@@ -13,6 +13,11 @@ public class BBsFreeController {
 	public String home() {
 		
 		
+		return "bbs/free/list";
+	}
+	
+	@RequestMapping(value="/insert", method=RequestMethod.GET)
+	public String insert() {
 		return null;
 	}
 }

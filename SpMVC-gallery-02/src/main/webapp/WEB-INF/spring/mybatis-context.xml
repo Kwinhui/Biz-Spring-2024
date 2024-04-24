@@ -16,7 +16,7 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="!Biz8080"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/galleryDB"></property>
+			value="jdbc:mysql://localhost:3306/galleryDB2"></property>
 	</bean>
 
 	<!-- SqlSession -->
@@ -25,6 +25,10 @@
 		<property name="dataSource" ref="ds"></property>
 		<property name="typeAliasesPackage"
 			value="com.callor.gallery.models"></property>
+			<property name="mapperLocations"
+				 value="/WEB-INF/spring/mapper/*-mapper.xml"></property>
+			
+			
 
 	</bean>
 
