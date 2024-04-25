@@ -8,8 +8,10 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.gallery.dao.GalleryDao;
+import com.callor.gallery.dao.ImagesDao;
 import com.callor.gallery.models.GalleryVO;
 import com.callor.gallery.service.FileUploadService;
 import com.callor.gallery.service.GalleryService;
@@ -19,19 +21,23 @@ public class GalleryServiceImpl implements GalleryService{
 	
 	private final GalleryDao galleryDao;
 	private final FileUploadService fileUploadService;
-	
+	private final ImagesDao imagesDao;
 
 	
 	
-	public GalleryServiceImpl(GalleryDao galleryDao, FileUploadService fileUploadService) {
+	
+
+	public GalleryServiceImpl(GalleryDao galleryDao, FileUploadService fileUploadService, ImagesDao imagesDao) {
 		super();
 		this.galleryDao = galleryDao;
 		this.fileUploadService = fileUploadService;
+		this.imagesDao = imagesDao;
 	}
 
 	@Autowired
 	public void create_table() {
 		galleryDao.create_table(null);
+		imagesDao.create_table("");
 	}
 
 	@Override
@@ -66,6 +72,15 @@ public class GalleryServiceImpl implements GalleryService{
 		if(ret > 0) {
 			return galleryVO;
 		}
+		
+		return null;
+	}
+
+	@Override
+	public List<GalleryVO> createGallery(GalleryVO galleryVO, MultipartHttpServletRequest image_files)
+			throws Exception {
+
+		List<String> result = fileUploadService.filesUpload(image_files);
 		
 		return null;
 	}
