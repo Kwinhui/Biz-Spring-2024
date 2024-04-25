@@ -17,7 +17,14 @@
     <section class="gallery container">
       <div class="gallery card" th:each="GA, item:${GALLERYS}">
         <div>
-          <img th:src="${GA.g_image}" width="100px" src="../../../static/images/no.png" />
+          <a th:href="@{/upload/{image}(image=${GA.g_up_image})}" target="_new">
+            <img
+              th:src="@{/upload/{image}(image=${GA.g_up_image})}"
+              width="130px"
+              src="../../../static/images/no.png"
+              th:alt="${GA.g_origin_image}"
+            />
+          </a>
         </div>
         <h3 th:text="${GA.g_subject}" class="gallery subject">이미지 제목</h3>
       </div>
