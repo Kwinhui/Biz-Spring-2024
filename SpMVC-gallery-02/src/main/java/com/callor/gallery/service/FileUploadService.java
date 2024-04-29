@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.callor.gallery.models.ImageVO;
+
 /*
  * fileupload 에선 try-catch 를 사용하지않고
  * 오류가 발생하면 오류나기 전으로 다시 return
@@ -20,6 +22,6 @@ public interface FileUploadService {
 	public String fileUpload(MultipartFile file) throws Exception;
 	 
 	// 여러개의 파일을 업로드 실행하고 변형된 파일 이름 리스트를 return
-	public List<String> filesUpload(MultipartHttpServletRequest files) throws Exception;
+	public List<ImageVO> filesUpload(MultipartHttpServletRequest files) throws Exception;
 	
 }

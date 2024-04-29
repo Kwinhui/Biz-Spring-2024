@@ -8,8 +8,25 @@
  	<select id="selectAll">
  		SELECT * FROM tbl_gallerys ORDER BY g_date DESC, g_time DESC
  	</select>
- 	<select id="findById"></select>
- 	<insert id="insert">
+ 	<select id="findById">
+ 		SELECT * FROM tbl_gallerys WHERE g_id = #{g_id}
+ 	</select>
+ 	<!-- AUTO_INCREMENT 일때 -->
+ 	<!-- insert할때 GalleryVO 에 각 요소들의 data -->
+ 	<!-- 
+ 		SelectKey
+ 		insert 가 실행되기 전 or 후(order = "BEFORE,AFTER")
+ 		GalleryVO 에 g_id 속성에 넣어라
+ 	 -->
+ 	 <!-- 
+ 	 	SELECT LAST_INSERT_ID()
+ 	 	마지막으로 insert 된 key 값을 가져와서 GalleryVO 이 g_id에 담아놔
+ 	  -->
+ 	<insert id="insert" parameterType="GalleryVO">
+ 		<selectKey resultType="String" keyProperty="g_id" order="AFTER">
+ 		SELECT LAST_INSERT_ID()
+ 		</selectKey>
+ 	
  		INSERT INTO tbl_gallerys (
  			g_id, g_date, g_time, g_author, g_subject,
  			g_content, g_origin_image, g_up_image

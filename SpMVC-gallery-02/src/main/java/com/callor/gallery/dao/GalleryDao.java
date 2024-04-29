@@ -5,5 +5,8 @@ import com.callor.gallery.models.GalleryVO;
 public interface GalleryDao extends genericDao<GalleryVO, String>{
 
 	public void create_table(String dumy);
+	
+
+	public GalleryVO findById(String PK);
 
 }

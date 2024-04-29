@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
-public class ImagesVO {
+public class ImageVO {
 	
 	private String i_id; 				// VARCHAR(125)
 	private String 	i_gid;				// VARCHAR(125)

@@ -95,7 +95,7 @@ public class GalleryController {
 			}
 				
 			model.addAttribute("GALLERY", resultVO);
-			log.debug("{}", resultVO.toString());
+//			log.debug("{}", resultVO.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
