@@ -8,9 +8,6 @@ import com.callor.gallery.models.ImageVO;
 
 public interface ImageDao extends genericDao<ImageVO, String>{
 
-	
-
-	public void create_table(String dumy);
 	// 매개변수가 1개일땐 이름이 상관없지만 2개이상일땐 @Param
 	/*
 	 * Dao 의 method 에서 mapper 로 전달하는 매개변수가 1개만 있을 경우는

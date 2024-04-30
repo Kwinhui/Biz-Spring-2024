@@ -23,8 +23,8 @@
 		
 		<!-- isAnonymouse() 로그인이 안돼있는사람 -->
 		<!-- isAuthenticated() 로그인이 돼있는사람 -->
-		<sec:intercept-url pattern="/user/login" access="isAnonymouse()"/>
-		<sec:intercept-url pattern="/user/join" access="isAnonymouse()"/>
+		<sec:intercept-url pattern="/user/login" access="isAnonymous()"/>
+		<sec:intercept-url pattern="/user/join" access="isAnonymous()"/>
 		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated"/>
 		<!-- 모든걸 통과시켜 -->
 		<sec:intercept-url pattern="/**" access="permitAll()"/>
@@ -36,7 +36,7 @@
 	</sec:http>
 	
 	<sec:authentication-manager>
-		<sec:authentication-provider ref="authProviderImpl"></sec:authentication-provider>
+		<sec:authentication-provider ref="authProviderImpl" />
 	</sec:authentication-manager>
 
 </beans>
