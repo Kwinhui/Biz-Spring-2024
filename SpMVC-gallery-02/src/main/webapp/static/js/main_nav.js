@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navs = Object.keys(NAV_INDEX); // NAV_INDEX 의 키들만
   navs.forEach((key) => {
     if (pathArr.join(" ").includes(key)) {
-      document.querySelector(`nav.main li${key}`)?.classList.add("active");
+      document.querySelector(`nav.main li.${key}`)?.classList.add("active");
     }
   });
 });
