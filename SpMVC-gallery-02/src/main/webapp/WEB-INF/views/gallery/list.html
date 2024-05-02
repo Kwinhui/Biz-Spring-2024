@@ -15,7 +15,7 @@
       <a href="../gallery/input.html" th:href="@{/gallery/insert}">이미지 업로드</a>
     </section>
     <section class="gallery container">
-      <div class="gallery card" th:each="GA, item:${GALLERYS}">
+      <div class="gallery card" th:each="GA:${GALLERYS}">
         <div>
           <a th:href="@{/upload/{image}(image=${GA.g_up_image})}" target="_new">
             <img
