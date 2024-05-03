@@ -7,7 +7,7 @@
  * console.log(NAV_INDEX["home"]) 결과는 ? {url : "/"}
  */
 const NAV_INDEX = {
-  home: { url: "/" },
+  home: { url: "" },
   notice: { url: "bbs/notice" },
   free: { url: "bbs/free" },
 };

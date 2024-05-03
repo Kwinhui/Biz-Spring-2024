@@ -1,6 +1,9 @@
 package com.callor.gallery.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,10 +35,19 @@ public class UserController {
 		return null;
 	}
 		
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login() {
+	@RequestMapping(value= {"/login","/login/{fail}"},method=RequestMethod.GET)
+	public String login(@PathVariable(value = "fail", required = false) String fail,
+			HttpSession httpSession) {
+		// required = false 를 쓰는이유는
+		// /login 으로 요청했을때 fail 이라는값은 쓸모없는 변수이기때문에
+		// required = false 를 쓰면 있어도 되고 없어도 된다
 		
-		return null;
+		if(fail == null || fail.isBlank()) {
+			httpSession.removeAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+		}
+		
+		
+		return "user/login";
 	}
 	
 	

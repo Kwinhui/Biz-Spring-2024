@@ -43,7 +43,14 @@
         <a href="" th:href="@{/user/mypage}" sec:authorize="isAuthenticated()">
           마이페이지(<span sec:authentication="principal.username"></span>)</a
         >
-        <a href="" th:href="@{/user/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+        <!-- javascript:void(0) a태그를 무력화 시키는 코드 -->
+        <!-- 로그아웃은 POST로 보내줘야 정상임 -->
+        <!-- th:actiohn 의 url은 sec-context.xml 의 logout-url과 같음 -->
+        <a href="javascript:void(0)" sec:authorize="isAuthenticated()"
+          ><form th:action="@{/user/logout}" method="POST" onclick="this.submit()">
+            로그아웃
+          </form></a
+        >
       </div>
     </header>
     <nav class="main">
