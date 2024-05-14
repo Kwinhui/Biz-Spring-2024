@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
-
+// session template 필요없음
 
 @Configuration
 @MapperScan(basePackages = {"com.callor.gallery.dao"})
@@ -22,6 +22,7 @@ public class MyBatisContextConfig {
 	 * JavaCode 에서 /WEB-INF 또는 src/main/resources 등의 폴더에 있는
 	 * xml 등의 파일에 접근하기 위한 도구
 	 */
+	// 모든 정보를 담고있음
 	private final ApplicationContext context;
 	public MyBatisContextConfig(ApplicationContext context) {
 		super();
@@ -52,7 +53,7 @@ public class MyBatisContextConfig {
 					context.getResources("/WEB-INF/spring/mapper/*-mapper.xml"));
 			
 			// ~~/src/main/resources 폴더의 mapper 폴더에서 xml 을 참조하고 싶을때
-			// context.getResource("classpath:/**/mapper/*-mapper.xml");
+			// context.getResources("classpath:/**/mapper/*-mapper.xml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

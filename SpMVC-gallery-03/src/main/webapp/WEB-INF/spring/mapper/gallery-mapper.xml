@@ -14,7 +14,8 @@
  	<insert id="insert">
  		INSERT INTO tbl_mygallery(
  		g_id, g_date, g_time, g_subject, g_content, g_writer, g_password, g_image
- 		)VALUES (
+ 		)
+ 		VALUES (
  		#{g_id}, #{g_date}, #{g_time}, #{g_subject}, #{g_content}, #{g_writer},
 		#{g_password}, #{g_image}
  		)
