@@ -9,45 +9,29 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-// bean-context.xml 역할을 수행 
 @Configuration
-// annotation-driven 를 대신하는 설정, MVC 패턴으로 사용하겠다
 @EnableWebMvc
-
-@ComponentScan(basePackages = {"com.callor.gallery.controller", "com.callor.gallery.service"})
+@ComponentScan(basePackages = {"com.callor.gallery.controller"})
 public class ServletContextConfig implements WebMvcConfigurer{
 
-	// resource-mapping 을 대신하는 코드
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// TODO Auto-generated method stub
-		
-		registry.addResourceHandler("/static/**")
-				.addResourceLocations("/static/");
-		// css로 요청하면
-		registry.addResourceHandler("/css/**")
-		// static/css 폴더를 보여줘라
-		.addResourceLocations("/static/css/");
-		
-		registry.addResourceHandler("/js/**")
-		.addResourceLocations("/static/js/");
-		
-		// 누군가가 images 파일을 요청하면
-		registry.addResourceHandler("/images/**")
-		// "file:///app/upload/", "/static/images/" 여기서 찾아봐
-		.addResourceLocations("file:///app/upload/", "/static/images/");
+		registry
+		.addResourceHandler("/static/**")
+		.addResourceLocations("/static/");
 		
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 	}
-	
-	// view 를 rendering 하는 bean 생성
+
 	@Bean
 	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		InternalResourceViewResolver resolver = 
+				new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
+		
 	}
-	
-	
+
 }

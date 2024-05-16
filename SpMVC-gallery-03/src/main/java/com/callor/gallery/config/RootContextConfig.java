@@ -34,4 +34,11 @@ public class RootContextConfig {
 		return resolver;
 	}
 
+	// name = "upLoadPath" - fileServiceImplV1 에 있는 이름과 똑같이 만들어야함
+	@Bean(name ="upLoadPath")
+	public String upLoadPath() {
+		
+		return "c:/app/upload";
+	}
+	
 }
