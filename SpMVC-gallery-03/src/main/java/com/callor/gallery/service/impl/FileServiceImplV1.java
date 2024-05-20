@@ -78,7 +78,7 @@ public class FileServiceImplV1 implements FileService{
 	}
 
 	@Override
-	public List<String> filesUp(MultipartHttpServletRequest files) {
+	public List<ImageVO> filesUp(MultipartHttpServletRequest files) throws Exception {
 
 		/*
 		 * view의 form input[type="file"] tag 에 name( = files) 속성을 통하여
