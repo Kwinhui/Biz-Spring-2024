@@ -56,8 +56,8 @@ public class NaverController {
 		String KEY_Naver_Client_Id = "X-Naver-Client-Id";
 		String KEY_Naver_Client_Secret = "X-Naver-Client-Secret";
 		
-		String VALUE_Naver_Client_Id = "??";
-		String VALUE_Naver_Client_Secret = "??";
+		String VALUE_Naver_Client_Id = "D9tukQzp3RuRm0Z943oZ";
+		String VALUE_Naver_Client_Secret = "duOPc1VruF";
 
 		// Http Header 에 ID 와 SECRET 값을 설정하기
 		// org.spring...HttpHeaders import
